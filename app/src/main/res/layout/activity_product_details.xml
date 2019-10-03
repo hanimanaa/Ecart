@@ -13,7 +13,7 @@
         android:layout_height="300dp"
         android:scaleType="centerInside"
         android:layout_marginTop="2dp"
-        android:rotation="90"
+
         />
 
     <TextView
