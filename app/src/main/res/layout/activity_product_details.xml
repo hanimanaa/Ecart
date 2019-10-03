@@ -58,21 +58,39 @@
         android:layout_below="@+id/product_description_details"
         android:textColor="@color/colorPrimaryDark"
         />
-    <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
-        android:id="@+id/number_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:elevation="6dp"
-        app:textSize="10dp"
-        app:initialNumber="1"
-        app:finalNumber="100"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:layout_below="@+id/product_price_details"
-        android:layout_marginTop="10dp"
-        >
 
-    </com.cepheuen.elegantnumberbutton.view.ElegantNumberButton>
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/product_price_details"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:id="@+id/min_btn"
+            android:layout_centerHorizontal="true"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_remove_circle_black_24dp"/>
+
+        <EditText
+            android:id="@+id/num_et"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="1"
+            android:inputType="number"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryDark"/>
+
+        <ImageView
+            android:id="@+id/pls_btn"
+            android:layout_centerHorizontal="true"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_add_circle_black_24dp"/>
+
+    </android.support.v7.widget.LinearLayoutCompat>
 
     <Button
         android:id="@+id/pd_add_to_cart_btn"

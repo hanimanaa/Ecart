@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,13 +33,15 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
    // private FloatingActionButton addToCartBtn;
     private Button addToCartBtn;
-    private ImageView productImage;
+    private ImageView productImage , plsImage , minImage;
     private ElegantNumberButton numberButton;
     private TextView productPrice,productDescription,productName;
     private String productID="";
     private String PPrice="";
     DatabaseReference orderListRef,carListRef;
     String maxid="0";
+
+    private EditText numEt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,11 +56,15 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
 
         addToCartBtn=(Button)findViewById(R.id.pd_add_to_cart_btn);
-        numberButton=(ElegantNumberButton)findViewById(R.id.number_btn);
+        //numberButton=(ElegantNumberButton)findViewById(R.id.number_btn);
         productImage=(ImageView)findViewById(R.id.product_image_details);
         productName=(TextView) findViewById(R.id.product_name_details);
         productDescription=(TextView)findViewById(R.id.product_description_details);
         productPrice=(TextView)findViewById(R.id.product_price_details);
+
+        numEt=(EditText) findViewById(R.id.num_et);
+        plsImage=(ImageView) findViewById(R.id.pls_btn);
+        minImage=(ImageView) findViewById(R.id.min_btn);
 
         getProductDetails(productID);
 
@@ -105,7 +112,26 @@ public class ProductDetailsActivity extends AppCompatActivity {
             }
         });
 
+        plsImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int x;
+                x=Integer.parseInt(numEt.getText().toString());
+                x++;
+                numEt.setText(String.valueOf(x));
+            }
+        });
 
+        minImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int x;
+                x=Integer.parseInt(numEt.getText().toString());
+                if(x>1)
+                x--;
+                numEt.setText(String.valueOf(x));
+            }
+        });
         addToCartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
@@ -135,7 +161,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
         cartMap.put("time",saveCurrentTime);
         cartMap.put("name",productName.getText().toString());
         cartMap.put("price",PPrice);
-        cartMap.put("quantity",numberButton.getNumber());
+        //cartMap.put("quantity",numberButton.getNumber());
+        cartMap.put("quantity",numEt.getText().toString());
 
         //.child(Prevalent.currentOnlineUser.getPhone())
 
